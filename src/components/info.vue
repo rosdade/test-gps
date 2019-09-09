@@ -36,7 +36,7 @@ export default {
     },
     mounted() {
         window.addEventListener('load', () => {
-            navigator.geolocation.watchPosition(this.getSpeed, this.displayError, {enableHighAccuracy: true, maximumAge: 50, timeout: 500});
+            navigator.geolocation.watchPosition(this.getSpeed, this.displayError, {enableHighAccuracy: true, maximumAge: 50});
             const params = new URLSearchParams(new URL(window.location.href).search.slice(1));
             const relative = !!Number(params.get("relative"));
             const coordinateSystem = params.get("coord");

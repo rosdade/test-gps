@@ -1,0 +1,7 @@
+{
+  "appId": "com.testgps.app",
+  "appName": "Test GPS",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist"
+}
