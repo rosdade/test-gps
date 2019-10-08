@@ -6,6 +6,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 import {loadedGoogleMapsAPI} from '../assets/gmaps';
 
 var map;

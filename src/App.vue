@@ -8,7 +8,8 @@
     <ion-content id="content">
       <div slot="fixed">
         <div class="map_container">
-          <mappa v-bind:position="position" v-bind:heading="heading"/>
+<!--           <mappa v-bind:position="position" v-bind:heading="heading"/> -->
+          <mapbox v-bind:position="position" v-bind:heading="heading"/>
         </div>
         <div class="div_container">
           <info @changedPosition="updatePosition" @changedHeading="updateHeading"/>
@@ -20,13 +21,15 @@
 
 <script>
 import info from "./components/info";
-import mappa from './components/mappa';
+//import mappa from './components/mappa';
+import mapbox from './components/mappa2';
 
 export default {
   name: 'app',
   components: {
     info,
-    mappa
+    //mappa,
+    mapbox
   },
   data() {
     return {

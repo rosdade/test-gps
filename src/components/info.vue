@@ -16,6 +16,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import KGauge from '@kagronick/kgauge-vue';
 import { AbsoluteOrientationSensor, RelativeOrientationSensor } from 'motion-sensors-polyfill'
 
@@ -37,6 +38,9 @@ export default {
     mounted() {
         window.addEventListener('load', () => {
             navigator.geolocation.watchPosition(this.getSpeed, this.displayError, {enableHighAccuracy: true, maximumAge: 50});
+            //DeviceOrientationEvent.requestPermission();
+            console.log(navigator);
+
             const params = new URLSearchParams(new URL(window.location.href).search.slice(1));
             const relative = !!Number(params.get("relative"));
             const coordinateSystem = params.get("coord");

@@ -15,7 +15,7 @@
     "@ionic/vue": "0.0.4",
     "@kagronick/kgauge-vue": "^1.0.7",
     "core-js": "^2.6.5",
-    "geolib": "^3.0.4",
+    "mapbox-gl": "^1.4.0",
     "motion-sensors-polyfill": "^0.3.1",
     "quaternion-to-euler": "^0.5.0",
     "register-service-worker": "^1.6.2",
