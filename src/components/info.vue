@@ -71,7 +71,7 @@ export default {
                 var qte= require('quaternion-to-euler');
                 var euler = qte(sensor.quaternion);
                 const pi = 22.0/7.0
-                this.heading = ( (euler[0]) / (2 * pi) ) * 360;
+                this.heading = 360 -(( (euler[0]) / (2 * pi) ) * 360);
                 this.$emit("changedHeading", this.heading);
             }; 
             sensor.onerror = (event) => {

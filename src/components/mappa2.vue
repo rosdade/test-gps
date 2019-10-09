@@ -1,8 +1,12 @@
 <template>
-  <div class="mapbox" id="mapbox" />
+    <div id="mapContainer" class="mapContainer" style="height: 100%; width: 100%">
+         <div class="mapbox" id="mapbox" style="width: 100%; height: 100%"/>
+         <ion-icon md="md-navigate" ios="md-navigate" class="logo" />
+    </div>
 </template>
 
 <script>
+/* eslint-disable */
 import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9zZGFkZSIsImEiOiJjazEzaTFheTIwOW84M2NxZGpseGFodGlkIn0.cqYrYOXCRYMrhN30d0fGfQ';
@@ -12,57 +16,63 @@ var map;
 export default {
     name: "mapbox",
     mounted() {
+        const self = this;
         window.addEventListener('load', function() {     
-            this.setMapSize;      
             map = new mapboxgl.Map({
                 container: 'mapbox',
                 style: 'mapbox://styles/mapbox/light-v9',
                 center: [0, 0],
-                zoom: 9,
+                zoom: 18,
                 pitch: 60,
-                antialias: true
+                antialias: true,
+                interactive: false
             });
         });
     },
     watch: {
         $props: {
             handler() {
-                this.updateMap()
+                this.updateMap();
             },
             deep: true
         }
     },
     props: {
         position: {
+            required: true,
             type: Object,
             defaut: {lat: 0, lng:0}
         },
         heading: {
+            required: true,
             type: Number,
             defaut: 0
         }
     },
     methods: {
-        setMapSize() {
-            var mapContainer = document.getElementById("mapbox");
-            const map_Height = document.getElementById("content").offsetHeight;
-            const map_Width = document.getElementById("content").offsetWidth;
-
-            mapContainer.style.height = map_Height + "px";
-            mapContainer.style.width = map_Width + "px";
-        },
         updateMap() {
-            map.panTo([this.position.lng, this.position.lat]);
-            map.rotateTo(this.heading);
-        },
+            map.jumpTo({
+                center: {lon: this.position.lng, lat: this.position.lat},
+                bearing: this.heading
+            });
+        }
     }
 }
 </script>
 
 <style>
-    .mapbox {
-        position:absolute; 
-        top:0; bottom:0;
-        width:100%;
-    }
+.mapContainer {
+    position: relative;
+    text-align: center;
+}
+
+.logo {
+    position: absolute;
+    color: blue;
+    width: 50px;
+    height: 50px;
+    top: calc(50% - 25px);
+    left: 50%;
+    transform: translate(-50% , -50% ) rotateX(60deg);
+}
 </style>

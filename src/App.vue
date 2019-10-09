@@ -5,12 +5,10 @@
         <ion-title>Test GPS</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content id="content">
-      <div slot="fixed">
-        <div class="map_container">
-<!--           <mappa v-bind:position="position" v-bind:heading="heading"/> -->
+    <ion-content id="content" >
+      <div slot="fixed" style="height: 100%; width: 100%">
+        <!--           <mappa v-bind:position="position" v-bind:heading="heading"/> -->
           <mapbox v-bind:position="position" v-bind:heading="heading"/>
-        </div>
         <div class="div_container">
           <info @changedPosition="updatePosition" @changedHeading="updateHeading"/>
         </div>
@@ -57,6 +55,7 @@ export default {
 .map-container {
   position: relative;
   height: 100%;
+  width: 100%;
 }
 
 .div_container {
