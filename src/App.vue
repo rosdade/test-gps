@@ -5,8 +5,8 @@
         <ion-title>Test GPS</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content id="content" >
-      <div slot="fixed" style="height: 100%; width: 100%">
+    <ion-content id="content" style="height: 100%; width: 100%">
+      <div id="map" slot="fixed" style="height: 100%; width: 100%">
         <!--           <mappa v-bind:position="position" v-bind:heading="heading"/> -->
           <mapbox v-bind:position="position" v-bind:heading="heading"/>
         <div class="div_container">

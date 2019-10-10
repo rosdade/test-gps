@@ -1,5 +1,5 @@
 <template>
-    <div id="mapContainer" class="mapContainer" style="height: 100%; width: 100%">
+    <div id="mapContainer" class="mapContainer">
          <div class="mapbox" id="mapbox" style="width: 100%; height: 100%"/>
          <ion-icon md="md-navigate" ios="md-navigate" class="logo" />
     </div>
@@ -17,7 +17,8 @@ export default {
     name: "mapbox",
     mounted() {
         const self = this;
-        window.addEventListener('load', function() {     
+        window.addEventListener('load', function() {    
+            self.setMapSize(); 
             map = new mapboxgl.Map({
                 container: 'mapbox',
                 style: 'mapbox://styles/mapbox/light-v9',
@@ -50,6 +51,14 @@ export default {
         }
     },
     methods: {
+        setMapSize() {
+            var mapContainer = document.getElementById("mapContainer");
+            const map_Height = document.getElementById("content").offsetHeight;
+            const map_Width = document.getElementById("content").offsetWidth;
+
+            mapContainer.style.height = map_Height + "px";
+            mapContainer.style.width = map_Width + "px";
+        },
         updateMap() {
             map.jumpTo({
                 center: {lon: this.position.lng, lat: this.position.lat},
